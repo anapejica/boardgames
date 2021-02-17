@@ -13,6 +13,11 @@
 
 (defn display-all-boardgames []
   (for [boardgame (get-all-boardgames)]
-     (println (:name boardgame) (:category boardgame) (:price boardgame) (:description boardgame))
+     (println (:name boardgame) (:category boardgame) (:price boardgame))
         )
   )
+
+(defn insert-boardgame [name price category numberofsold availability]
+  (sql/insert! connection :boardgame [:name :price :category :numberofsold :availability] [name price category numberofsold availability]))
+  
+  

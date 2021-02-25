@@ -5,7 +5,6 @@
            [hiccup.bootstrap.page :refer :all]
            ))
 
-
 (defn navbar []
   [:nav {:class "navbar navbar-expand-lg navbar-light bg-light"}
    [:a {:class "navbar-brand" :href "/"} "Board Games"]
@@ -19,6 +18,7 @@
       [:a {:class "nav-link dropdown-toggle" :href "/" :id "navbarDropdownMenuLink" :data-toggle "dropdown" :aria-hashpopup "true" :aria-expanded "false"} "Board Games"]
       [:div {:class "dropdown-menu" :aria-labelledby "navbarDropdownMenuLink"}
        [:a {:class "dropdown-item" :href "/"} "List of Board Games"]
+       [:a {:class "dropdown-item" :href "/add"} "Add New Board Game"]
        ]
       ]
 	]
@@ -26,7 +26,7 @@
     ]])
 
 (defn footer []
-  [:footer {:style "position: absolute; bottom: 0; width: 100%;  height: 60px; background-color: #f8f9fa; color: black; text-align: center"}
+  [:footer {:style "bottom: 0; width: 100%;  height: 60px; background-color: #f8f9fa; color: black; text-align: center"}
    [:div {:class "text-center p-3"}
     [:p "© 2021 Copyright: Ana Pejica"]
     ]

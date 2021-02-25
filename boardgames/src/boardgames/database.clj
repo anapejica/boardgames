@@ -26,13 +26,13 @@
      (println (:name boardgame) (:category boardgame) (:price boardgame))
         )
   )
-(defn update-boardgame[id name category numberofsold availability]
-  (sql/update! connection :boardgame {:id id :name name :category (set-category category) :numberofsold numberofsold :availability (set-availability availability)} ["id = ?" id]))
+(defn update-boardgame[id name category numberofsold price availability]
+  (sql/update! connection :boardgame {:id id :name name :category (set-category category) :numberofsold numberofsold :price price :availability (set-availability availability)} ["id = ?" id]))
 
 (defn get-boardgame [id]
   (into [] (sql/query connection ["select * from boardgame where id = ?" id])))
 
 (defn insert-boardgame [name price category numberofsold availability]
-  (sql/insert! connection :boardgame [:name :price :category :numberofsold :availability] [name price category numberofsold availability]))
+  (sql/insert! connection :boardgame [:name :price :category :numberofsold :availability] [name price (set-category category) numberofsold (set-availability availability)]))
   
   

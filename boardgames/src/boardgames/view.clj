@@ -70,12 +70,43 @@
                   (form/label "numberofsold" "Sold number")
                   (form/text-field {:class "form-control"} "numberofsold" (:numberofsold boardgame) )]
                  [:div {:class "form-group"}
+                  (form/label "price" "Price")
+                  (form/text-field {:class "form-control"} "price" (:price boardgame) )]
+                 [:div {:class "form-group"}
                   (form/label "availability" "Available")
                   (form/check-box {:class "form-control check-box-style" :style "height: 30px; width: 30px"} "availability" (:availability boardgame))]
                  (form/submit-button {:class "btn btn-primary pull-right" }  "Edit Board Game")
                  [:br])) boardgame)]
  )
 
+(defn add-form []
+  [:br]
+  [:div 
+   [:h2 {:class "text-center"} "Add New Board Game"]
+    
+     (form/form-to [:post "/create-boardgame"]
+                 (anti-forgery/anti-forgery-field)
+                 [:div {:class "form-group"}
+                  (form/label "name" "Name")
+                  (form/text-field {:class "form-control"} "name")]
+                 [:div {:class "form-group"}
+                  (form/label "category" "Category")
+                  (form/drop-down {:class "form-control"} "category" ["Family Game","Role-Playing Game","Card Game", "Strategy Game", "Other"])]
+                 [:div {:class "form-group"}
+                  (form/label "numberofsold" "Sold number")
+                  (form/text-field {:class "form-control"} "numberofsold")]
+                 [:div {:class "form-group"}
+                  (form/label "price" "Price")
+                  (form/text-field {:class "form-control"} "price")]
+                 [:div {:class "form-group"}
+                  (form/label "availability" "Available")
+                  (form/check-box {:class "form-control check-box-style" :style "height: 30px; width: 30px"} "availability")]
+                 (form/submit-button {:class "btn btn-primary pull-right" }  "Save")
+                 [:br])]
+ )
+(defn show-add-form []
+  (layout/root ""
+               (add-form)))
 (defn show-update-form [boardgame]
   (layout/root ""
             (update-form boardgame)))

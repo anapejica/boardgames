@@ -18,6 +18,13 @@
    (if (= category 4) "Strategy Game"
    (if (= category 5) "Other"))))))
 
+(defn category-id [category]
+   (if (= category "family") 1
+   (if (= category "roleplay") 2
+   (if (= category "card") 3
+   (if (= category "strategy") 4
+   (if (= category "other") 5))))))
+ 
 (defn show-all-boardgames []
   
   [:table {:class "table table-striped  table-bordered"}
@@ -44,12 +51,43 @@
             [:td {:style "visibility:hidden"} (:id boardgame)]
             ]))])
 
-(defn index-page [boardgames]
+(defn index-page []
   (layout/root ""
   			[:br]	
             [:h2 {:class "title-second"} "List of Board Games"]
             [:br]
             (show-all-boardgames)))
+
+(defn show-all-by-category [category]
+  
+  [:table {:class "table table-striped  table-bordered"}
+   [:thead
+    [:tr
+     [:th "Game"]
+     [:th "Price"]
+     [:th "Category"]
+     [:th "Number of sold"]
+     [:th "Available"]
+     ]]
+   (into [:tbody ]
+         (for [boardgame (db/find-by-category (category-id category))]
+           [:tr
+            [:td (:name boardgame)]
+            [:td (:price boardgame) "  RSD"]
+            [:td (set-category (:category boardgame))]
+            [:td (:numberofsold boardgame)]
+            [:td (set-availability (:availability boardgame))]
+            ]))])
+
+
+(defn all-boardgames-by-category [category]
+  (def temp category)
+  (layout/root ""
+  			[:br]	
+            [:h2 {:class "title-second"} (set-category (category-id temp))"s"]
+            [:br]
+            (show-all-by-category category)))
+
 
 (defn update-form [boardgame]
   [:br]

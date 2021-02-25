@@ -17,8 +17,14 @@
      [:li {:class "nav-item dropdown"}
       [:a {:class "nav-link dropdown-toggle" :href "/" :id "navbarDropdownMenuLink" :data-toggle "dropdown" :aria-hashpopup "true" :aria-expanded "false"} "Board Games"]
       [:div {:class "dropdown-menu" :aria-labelledby "navbarDropdownMenuLink"}
-       [:a {:class "dropdown-item" :href "/"} "List of Board Games"]
        [:a {:class "dropdown-item" :href "/add"} "Add New Board Game"]
+       [:a {:class "dropdown-item" :href "/"} "List of Board Games"]
+       [:div {:class "dropdown-divider"}]
+       [:a {:class "dropdown-item" :href "/family"} "Family Games"]
+       [:a {:class "dropdown-item" :href "/roleplay"} "Role-Play Games"]
+       [:a {:class "dropdown-item" :href "/card"} "Card Games"]
+       [:a {:class "dropdown-item" :href "/strategy"} "Strategy Games"]
+       [:a {:class "dropdown-item" :href "/other"} "Other"]
        ]
       ]
 	]

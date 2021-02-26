@@ -47,7 +47,7 @@
             [:td (:numberofsold boardgame)]
             [:td (set-availability (:availability boardgame))]
             [:td {:style "border-bottom: 0px"} [:a {:class "btn btn-primary" :href (str "/edit/" (h (:id boardgame)))} "Edit"]]
-            [:td {:style "border-bottom: 0px"} [:a {:class "btn btn-danger" :href (str "/delete/" (h (:id boardgame)))} "Delete"]]
+            [:td {:style "border-bottom: 0px"} [:a {:onclick "return confirm('Are you sure you want to delete this item?')" :class "btn btn-danger" :href (str "/delete/" (h (:id boardgame)))} "Delete"]]
             [:td {:style "visibility:hidden"} (:id boardgame)]
             ]))])
 
@@ -113,7 +113,7 @@
                  [:div {:class "form-group"}
                   (form/label "availability" "Available")
                   (form/check-box {:class "form-control check-box-style" :style "height: 30px; width: 30px"} "availability" (:availability boardgame))]
-                 (form/submit-button {:class "btn btn-primary pull-right" }  "Edit Board Game")
+                 (form/submit-button {:class "btn btn-primary pull-right" :onclick "return validate()" }  "Edit Board Game")
                  [:br])) boardgame)]
  )
 
@@ -139,7 +139,7 @@
                  [:div {:class "form-group"}
                   (form/label "availability" "Available")
                   (form/check-box {:class "form-control check-box-style" :style "height: 30px; width: 30px"} "availability")]
-                 (form/submit-button {:class "btn btn-primary pull-right" }  "Save")
+                 (form/submit-button {:onclick "return validate()" :class "btn btn-primary pull-right"  }  "Save")
                  [:br])]
  )
 (defn show-add-form []

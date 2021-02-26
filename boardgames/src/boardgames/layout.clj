@@ -32,7 +32,7 @@
     ]])
 
 (defn footer []
-  [:footer {:style "bottom: 0; width: 100%;  height: 60px; background-color: #f8f9fa; color: black; text-align: center"}
+  [:footer {:style "position: fixed; bottom: 0; width: 100%;  height: 60px; background-color: #f8f9fa; color: black; text-align: center"}
    [:div {:class "text-center p-3"}
     [:p "© 2021 Copyright: Ana Pejica"]
     ]
@@ -49,9 +49,12 @@
      (include-js "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
      (include-js "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
      (include-css "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+     (include-js "/js/validation.js")
      ]
     [:body
      [:div {:class "container"}
       body 
       ]
+     [:br]
+     [:br]
      (footer)] ))

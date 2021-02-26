@@ -3,7 +3,8 @@
 (:require [compojure.core :refer [defroutes GET POST]]
           [boardgames.database :as db]
           [boardgames.view :as view]
-          [clojure.string :as string]))
+          [clojure.string :as string]
+          [ring.util.response :as ring]))
 
 (defn show-all-boardgames []
   (view/index-page))
@@ -14,7 +15,7 @@
 (defn edit-boardgame [id name category numberofsold price availability]
     (when-not (string/blank? id)
     (db/update-boardgame id name category numberofsold price availability)
-    (show-all-boardgames))
+     (ring/redirect "/"))
  )
 
 (defn show-add-form []
@@ -22,12 +23,12 @@
 
 (defn create-new-boardgame [name category numberofsold price availability]
   (db/insert-boardgame name price category numberofsold availability)
-  (show-all-boardgames))
+  (ring/redirect "/"))
 
 (defn delete-boardgame [id]
   (when-not (string/blank? id)
     (db/delete-boardgame id))
-  (show-all-boardgames))
+  (ring/redirect "/"))
 
 (defn show-all-by-category [category]
   (view/all-boardgames-by-category category))

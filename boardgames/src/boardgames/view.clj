@@ -6,7 +6,9 @@
     [hiccup.page :refer :all]
     [hiccup.core :refer [h]]
     [hiccup.form :as form]
-    [ring.util.anti-forgery :as anti-forgery]))
+    [ring.util.anti-forgery :as anti-forgery]
+    [clojure.string :as str]     
+    [ring.util.response :as ring]))
 
 (defn set-availability [availability]
   (if (= availability true) "Yes" "No"))

@@ -7,7 +7,7 @@
 
 (defn navbar []
   [:nav {:class "navbar navbar-expand-lg navbar-light bg-light"}
-   [:a {:class "navbar-brand" :href "/"} "Board Games"]
+   [:a {:class "navbar-brand" :href "/list"} "Board Games"]
    [:button {:type "button" :class "navbar-toggler" :data-toggle "collapse"
              :data-target "#navbarNavDropdown" :aria-expanded "false" :aria-controls "navbarNavDropdown"
              :aria-label "Toggle navigation"}
@@ -15,10 +15,10 @@
    	[:div {:class "collapse navbar-collapse" :id "navbarNavDropdown"}
     [:ul {:class "navbar-nav"}
      [:li {:class "nav-item dropdown"}
-      [:a {:class "nav-link dropdown-toggle" :href "/" :id "navbarDropdownMenuLink" :data-toggle "dropdown" :aria-hashpopup "true" :aria-expanded "false"} "Board Games"]
+      [:a {:class "nav-link dropdown-toggle" :href "/list" :id "navbarDropdownMenuLink" :data-toggle "dropdown" :aria-hashpopup "true" :aria-expanded "false"} "Board Games"]
       [:div {:class "dropdown-menu" :aria-labelledby "navbarDropdownMenuLink"}
        [:a {:class "dropdown-item" :href "/add"} "Add New Board Game"]
-       [:a {:class "dropdown-item" :href "/"} "List of Board Games"]
+       [:a {:class "dropdown-item" :href "/list"} "List of Board Games"]
        [:div {:class "dropdown-divider"}]
        [:a {:class "dropdown-item" :href "/family"} "Family Games"]
        [:a {:class "dropdown-item" :href "/roleplay"} "Role-Play Games"]
@@ -29,7 +29,8 @@
       ]
 	]
     
-    ]])
+    ]
+    [:a {:class "navbar-brand" :href "/"} "Logout"]])
 
 (defn footer []
   [:footer {:style "position: fixed; bottom: 0; width: 100%;  height: 60px; background-color: #f8f9fa; color: black; text-align: center"}
@@ -38,7 +39,6 @@
     ]
   ]
  )
-
 
 (defn root[& body]
   (html5

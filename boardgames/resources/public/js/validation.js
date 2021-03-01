@@ -19,3 +19,20 @@ function validate() {
  
   	return true;
   }
+  
+  function beforeSubmit(){
+  	var username=document.getElementById("username").value;
+  	if (username == null || username == "" || username == " ") {
+        alert("Please enter username.");
+        return false;
+    }
+    
+    var pswd=document.getElementById("password").value;
+  	if (pswd == null || pswd == "" || pswd == " ") {
+        alert("Please enter password.");
+        return false;
+    }
+    
+    return true;
+  
+  }

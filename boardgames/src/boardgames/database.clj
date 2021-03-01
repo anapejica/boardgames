@@ -1,5 +1,6 @@
 (ns boardgames.database
-  (:require [clojure.java.jdbc :as sql]))
+  (:require [clojure.java.jdbc :as sql])
+  (:import (java.security MessageDigest)))
 
 (def connection
   {:classname "com.mysql.jdbc.Driver"
@@ -17,6 +18,8 @@
    (if (= category "Card Game") 3
    (if (= category "Strategy Game") 4
    (if (= category "Other") 5))))))
+ 
+;;boardgames 
  
 (defn get-all-boardgames []
   (into [] (sql/query connection ["select * from boardgame"])))
@@ -36,3 +39,14 @@
  (defn delete-boardgame [id]
  (sql/delete! connection :boardgame
             ["id = ?" id]))
+ 
+ 
+ (defn md5 [^String s]
+  (let [algorithm (MessageDigest/getInstance "MD5")
+        raw (.digest algorithm (.getBytes s))]
+    (format "%032x" (BigInteger. 1 raw))))
+
+;; admin
+
+ (defn login [username password]
+   (into [] (sql/query connection ["select * from user where username = ? and password=?" username (md5 password)])))

@@ -6,8 +6,7 @@
           [boardgames.core :as core]))
 
 (defroutes routes
-  core/home-routes
-  )
+  core/home-routes)
 
 (def app
   (wrap-defaults routes site-defaults))
